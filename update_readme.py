@@ -11,7 +11,7 @@ LANGUAGE_FOLDERS = {
 NOTES_FOLDER = "Notes"
 README_FILE = "README.md"
 
-GITHUB_BASE_URL = "https://github.com/wun-yu-lin/blob/main/leetcode-solution"  # 替換為你的 GitHub Repo URL
+GITHUB_BASE_URL = "https://github.com/wun-yu-lin/leetcode-solution/blob/main"  # 替換為你的 GitHub Repo URL
 
 
 def get_all_files(folder):
