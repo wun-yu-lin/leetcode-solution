@@ -102,3 +102,6 @@ if __name__ == "__main__":
 # echo "Success!"
 # # 正常結束 hook
 # exit 0
+
+## 修改 file 使用權限 在 terminal 執行
+# chmod +x .git/hooks/pre-commit
