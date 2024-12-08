@@ -1,80 +1,117 @@
 import os
-from collections import defaultdict
+import re
 
-def scan_solutions(base_dir, languages):
+BASE_DIR = os.getcwd()
+
+LANGUAGE_FOLDERS = {
+    "C++": "C++",
+    "Java": "Java"
+}
+
+NOTES_FOLDER = "Notes"
+README_FILE = "README.md"
+
+GITHUB_BASE_URL = "https://github.com/wun-yu-lin"  # 替換為你的 GitHub Repo URL
+
+
+def get_all_files(folder):
+    """取得指定資料夾內的所有檔案清單"""
+    folder_path = os.path.join(BASE_DIR, folder)
+    return os.listdir(folder_path) if os.path.exists(folder_path) else []
+
+
+def extract_note_info(note_file):
     """
-    掃描指定目錄，收集每個題目的解答檔案資訊。
-    :param base_dir: 專案根目錄
-    :param languages: 語言與資料夾的對應字典
-    :return: 題目與解答檔案的對應字典
+    從 Note 文件提取題目編號、名稱和 URL。
     """
-    solutions = defaultdict(dict)
-    for lang, folder in languages.items():
-        folder_path = os.path.join(base_dir, folder)
-        if not os.path.exists(folder_path):
+    with open(note_file, "r", encoding="utf-8") as file:
+        content = file.read()
+    match = re.search(r"# \[(\d+)\. (.+?)\]\((https?://leetcode\.com/problems/.+?)\)", content)
+    return match.groups() if match else (None, None, None)
+
+
+def parse_notes():
+    """
+    解析 Notes 資料夾，提取題目資訊。
+    """
+    notes_data = {}
+    for note in get_all_files(NOTES_FOLDER):
+        if not note.endswith(".md"):
             continue
-
-        for file_name in os.listdir(folder_path):
-            if not file_name.endswith((".cpp", ".java")):
-                continue
-
-            problem_name = file_name.split(".")[0]  # 提取題目名稱
-            solutions[problem_name][lang] = os.path.join(folder, file_name)
-    return solutions
+        note_file = os.path.join(BASE_DIR, NOTES_FOLDER, note)
+        problem_id, title, url = extract_note_info(note_file)
+        if problem_id:
+            notes_data[int(problem_id)] = {"title": title, "url": url, "languages": {}}
+    return notes_data
 
 
-def generate_table(solutions, languages):
+def find_solutions_by_language(language, problems):
+    """
+    根據語言資料夾，將解答連結添加到對應題目。
+    """
+    folder = LANGUAGE_FOLDERS.get(language)
+    for file_name in get_all_files(folder):
+        match = re.match(r"(\d+)_.*?\.(cpp|java)$", file_name, re.IGNORECASE)
+        if match:
+            problem_id = int(match.group(1))
+            if problem_id in problems:
+                problems[problem_id]["languages"][language] = f"{folder}/{file_name}"
+
+
+def build_table(problems):
     """
     生成 README 表格內容。
-    :param solutions: 題目與解答檔案的對應字典
-    :param languages: 語言列表
-    :return: 表格的字串
     """
-    header = "| Problem | " + " | ".join(languages) + " |\n"
-    divider = "|---------|" + "|".join([":---:" for _ in languages]) + "|\n"
-    rows = []
+    headers = ["Problem #", "Problem"] + list(LANGUAGE_FOLDERS.keys())
+    rows = [headers, [":---"] * len(headers)]
 
-    for problem in sorted(solutions.keys()):
-        row = [problem]
-        for lang in languages:
-            if lang in solutions[problem]:
-                row.append(f"[✔]({solutions[problem][lang]})")
+    for problem_id in sorted(problems.keys()):
+        problem = problems[problem_id]
+        row = [str(problem_id), f"[{problem['title']}]({problem['url']})"]
+        for lang in LANGUAGE_FOLDERS.keys():
+            if lang in problem["languages"]:
+                file_path = problem["languages"][lang]
+                row.append(f"[✔]({GITHUB_BASE_URL}/{file_path})")
             else:
                 row.append("-")
-        rows.append("| " + " | ".join(row) + " |")
+        rows.append(row)
 
-    return header + divider + "\n".join(rows) + "\n"
+    return "\n".join("| " + " | ".join(row) + " |" for row in rows)
 
 
-def write_readme(content):
+def update_readme(problems):
     """
-    將生成的內容寫入 README.md。
-    :param content: 生成的 README 內容
+    更新 README.md 文件內容。
     """
-    with open("README.md", "w") as readme_file:
-        readme_file.write(content)
+    table = build_table(problems)
+    content = f"# LeetCode Solutions\n\nThis repository contains solutions to LeetCode problems.\n\n{table}\n"
+    with open(README_FILE, "w", encoding="utf-8") as file:
+        file.write(content)
 
 
 def main():
-    base_dir = os.getcwd()
-    languages = {
-        "C++": "C++",
-        "Java": "Java",
-    }
+    # 整合所有資料
+    problems = parse_notes()
+    for language in LANGUAGE_FOLDERS.keys():
+        find_solutions_by_language(language, problems)
 
-    # 掃描解答檔案
-    solutions = scan_solutions(base_dir, languages)
+    # 更新 README
+    update_readme(problems)
 
-    # 生成表格內容
-    table = generate_table(solutions, list(languages.keys()))
 
-    # README 標頭與表格結合
-    readme_content = "# LeetCode Solutions\n\n"
-    readme_content += "This repository contains solutions to LeetCode problems.\n\n"
-    readme_content += table
+if __name__ == "__main__":
+    main()
 
-    # 寫入 README
-    write_readme(readme_content)
+
+
+def main():
+    # 整合所有資料
+    problems = parse_notes()
+    for language in LANGUAGE_FOLDERS.keys():
+        find_solutions_by_language(language, problems)
+
+    # 更新 README
+    update_readme(problems)
 
 
 if __name__ == "__main__":
