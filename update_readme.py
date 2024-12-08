@@ -71,7 +71,7 @@ def build_table(problems):
         for lang in LANGUAGE_FOLDERS.keys():
             if lang in problem["languages"]:
                 file_path = problem["languages"][lang]
-                row.append(f"[✔]({GITHUB_BASE_URL}/{file_path})")
+                row.append(f"[v]({GITHUB_BASE_URL}/{file_path})")  # 僅顯示 v
             else:
                 row.append("-")
         rows.append(row)
@@ -102,20 +102,6 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-def main():
-    # 整合所有資料
-    problems = parse_notes()
-    for language in LANGUAGE_FOLDERS.keys():
-        find_solutions_by_language(language, problems)
-
-    # 更新 README
-    update_readme(problems)
-
-
-if __name__ == "__main__":
-    main()
 
 
 # 以下為 commit hook
