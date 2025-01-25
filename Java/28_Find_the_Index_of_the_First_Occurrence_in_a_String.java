@@ -22,3 +22,8 @@ class Solution1 {
     }
 
 }
+
+class Solution2 {
+    // https://yeefun.github.io/kmp-algorithm-for-beginners/
+    // KMP algorithm
+}
