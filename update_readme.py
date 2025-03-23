@@ -51,7 +51,7 @@ def find_solutions_by_language(language, problems):
     """
     folder = LANGUAGE_FOLDERS.get(language)
     for file_name in get_all_files(folder):
-        match = re.match(r"(\d+)_.*?\.(cpp|java)$", file_name, re.IGNORECASE)
+        match = re.match(r"No_(\d+)_.*?\.(cpp|java)$", file_name, re.IGNORECASE)
         if match:
             problem_id = int(match.group(1))
             if problem_id in problems:
