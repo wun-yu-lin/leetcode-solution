@@ -1,19 +1,20 @@
-class Solution {
-    public int removeElement(int[] nums, int val) {
-        int p1 = 0;
-        int temp = 0;
+public class No_27_Remove_Element {
+    class Solution {
+        public int removeElement(int[] nums, int val) {
+            int p1 = 0;
+            int temp = 0;
 
-        for (int p2=0; p2 < nums.length; p2++) {
-            if (nums[p2] != val) {
-                temp = nums[p1];
-                nums[p1] = nums[p2];
-                nums[p2] = temp;
-                p1++;
+            for (int p2=0; p2 < nums.length; p2++) {
+                if (nums[p2] != val) {
+                    temp = nums[p1];
+                    nums[p1] = nums[p2];
+                    nums[p2] = temp;
+                    p1++;
+                }
             }
+            return p1;
         }
-        return p1;
     }
-}
 
 
 //這段程式碼是用來實現 **移除數組中的特定值**，並返回移除後的數組長度。此方法以原地修改陣列的方式完成，保留數組中不等於指定值的元素。以下是詳細的解釋：
@@ -84,4 +85,7 @@ class Solution {
 //        int length = sol.removeElement(nums, val);
 //        // length = 2
 //        // nums 的前兩個元素是 [2, 2]
-//        ```
+//        ```ls
+
+}
+

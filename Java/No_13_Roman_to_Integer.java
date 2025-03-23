@@ -1,35 +1,39 @@
-class Solution {
+import java.util.HashMap;
+import java.util.Map;
 
-    private static final Map<Character, Integer> romanMap = new HashMap<>();
-    static {
-        romanMap.put('I', 1);
-        romanMap.put('V', 5);
-        romanMap.put('X', 10);
-        romanMap.put('L', 50);
-        romanMap.put('C', 100);
-        romanMap.put('D', 500);
-        romanMap.put('M', 1000);
-    }
+public class No_13_Roman_to_Integer {
+    static class Solution {
 
-    public int romanToInt(String s) {
-        int sum = 0;
-        if (s.isEmpty()) {
+        private static final Map<Character, Integer> romanMap = new HashMap<>();
+        static {
+            romanMap.put('I', 1);
+            romanMap.put('V', 5);
+            romanMap.put('X', 10);
+            romanMap.put('L', 50);
+            romanMap.put('C', 100);
+            romanMap.put('D', 500);
+            romanMap.put('M', 1000);
+        }
+
+        public int romanToInt(String s) {
+            int sum = 0;
+            if (s.isEmpty()) {
+                return sum;
+            }
+            sum += romanMap.get(s.charAt(s.length() - 1));
+            for (int i = s.length() - 2; i >= 0; i--) {
+                char nextChar = s.charAt(i + 1);
+                char currChar = s.charAt(i);
+                if (romanMap.get(nextChar) > romanMap.get(currChar)) {
+                    sum -= romanMap.get(currChar);
+                } else {
+                    sum += romanMap.get(currChar);
+                }
+            }
+
             return sum;
         }
-        sum += romanMap.get(s.charAt(s.length() - 1));
-        for (int i = s.length() - 2; i >= 0; i--) {
-            char nextChar = s.charAt(i + 1);
-            char currChar = s.charAt(i);
-            if (romanMap.get(nextChar) > romanMap.get(currChar)) {
-                sum -= romanMap.get(currChar);
-            } else {
-                sum += romanMap.get(currChar);
-            }
-        }
-
-        return sum;
     }
-}
 
 //
 //
@@ -149,3 +153,5 @@ class Solution {
 //        - `L` 比 `V` 大，加法，`sum = 14 + 50 = 58`
 //
 //        結果：`sum = 58`。
+}
+

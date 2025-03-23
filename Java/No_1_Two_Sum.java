@@ -48,8 +48,10 @@
 // 👍 59068 👎 2111
 
 
+import java.util.HashMap;
+
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class No_1_Two_Sum {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int n = nums.length;
@@ -63,6 +65,11 @@ class Solution {
             }
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        No_1_Two_Sum solution = new No_1_Two_Sum();
+        solution.twoSum(new int[]{2, 7, 11, 15}, 9);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

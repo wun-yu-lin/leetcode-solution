@@ -1,22 +1,22 @@
-class Solution {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int p1 = m - 1;
-        int p2 = n - 1;
+public class No_88_Merge_Sorted_Array {
+    class Solution {
+        public void merge(int[] nums1, int m, int[] nums2, int n) {
+            int p1 = m - 1;
+            int p2 = n - 1;
 
-        int allp = m + n - 1;
+            int allp = m + n - 1;
 
-        while (p2 >= 0) {
-            if (p1 >= 0 && nums1[p1] > nums2[p2]) {
-                nums1[allp--] = nums1[p1--];
+            while (p2 >= 0) {
+                if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+                    nums1[allp--] = nums1[p1--];
+                    continue;
+                }
+                nums1[allp--] = nums2[p2--];
                 continue;
             }
-            nums1[allp--] = nums2[p2--];
-            continue;
         }
+
     }
-
-}
-
 
 //這段程式碼是一個典型的**合併排序陣列**的問題解法，主要用來合併兩個已經排序好的陣列，並將結果放入第一個陣列 `nums1` 中。以下是詳細解析：
 //        ### 問題背景
@@ -133,3 +133,5 @@ class Solution {
 //        - **空間複雜度**：\(O(1)\)，在 `nums1` 中就地合併，未使用額外空間。
 //
 //        這段程式碼透過反向填充與就地操作，實現了高效的合併排序。
+}
+

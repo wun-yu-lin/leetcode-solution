@@ -1,29 +1,30 @@
-class Solution {
-    public int canCompleteCircuit(int[] gas, int[] cost) {
-        int n = gas.length;
-        int totalGas = 0;
-        int totalGasCost = 0;
-        int currGas = 0;
-        int start = 0;
-        for (int i = 0; i < n; i++) {
-            totalGas += gas[i];
-            totalGasCost += cost[i];
+public class No_134_Gas_Station {
+    class Solution {
+        public int canCompleteCircuit(int[] gas, int[] cost) {
+            int n = gas.length;
+            int totalGas = 0;
+            int totalGasCost = 0;
+            int currGas = 0;
+            int start = 0;
+            for (int i = 0; i < n; i++) {
+                totalGas += gas[i];
+                totalGasCost += cost[i];
 
-            currGas = currGas - cost[i] + gas[i];
-            // 負數表示 gas 庫存不足
-            if (currGas < 0) {
-                start = i + 1;
-                currGas = 0;
+                currGas = currGas - cost[i] + gas[i];
+                // 負數表示 gas 庫存不足
+                if (currGas < 0) {
+                    start = i + 1;
+                    currGas = 0;
+                }
+            }
+
+            if (totalGasCost > totalGas) {
+                return -1;
+            } else {
+                return start;
             }
         }
-
-        if (totalGasCost > totalGas) {
-            return -1;
-        } else {
-            return start;
-        }
     }
-}
 //
 //
 //### 🚀 **LeetCode 134: Gas Station**
@@ -124,3 +125,5 @@ class Solution {
 //        1. 總加油量 ≥ 總消耗量，才有可能完成一圈。
 //        2. 當前油量小於零時，起點移動到下一個加油站。
 //        3. 遍歷結束後返回有效起點。
+}
+

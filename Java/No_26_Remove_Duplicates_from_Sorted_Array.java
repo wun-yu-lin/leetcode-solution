@@ -1,16 +1,17 @@
-class Solution {
-    public int removeDuplicates(int[] nums) {
+public class No_26_Remove_Duplicates_from_Sorted_Array {
+    class Solution {
+        public int removeDuplicates(int[] nums) {
 
-        int i = 0;
-        for (int j=0; j < nums.length; j++ ){
-            if(nums[i] != nums[j]){
-                i++;
-                nums[i] = nums[j];
+            int i = 0;
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[i] != nums[j]) {
+                    i++;
+                    nums[i] = nums[j];
+                }
             }
+            return i + 1;
         }
-        return i+1;
     }
-}
 
 
 //這段程式碼的功能是從已經排序好的數組中移除重複的元素，並返回移除重複元素後的數組長度。原數組會被修改以保留非重複元素，但重複的部分可以忽略。
@@ -94,3 +95,6 @@ class Solution {
 //        // length = 2
 //        // nums 的前兩個元素是 [1, 2]
 //        ```
+
+}
+

@@ -1,27 +1,28 @@
-class Solution {
-    public int[] productExceptSelf(int[] nums) {
-        // prefix = nums[0] × nums[1] × ... × nums[i-1]
-        // suffix = nums[i+1] × nums[i+2] × ... × nums[n-1]
+public class No_238_Product_of_Array_Except_Self {
+    class Solution {
+        public int[] productExceptSelf(int[] nums) {
+            // prefix = nums[0] × nums[1] × ... × nums[i-1]
+            // suffix = nums[i+1] × nums[i+2] × ... × nums[n-1]
 
-        int n = nums.length;
-        int[] res = new int[n];
-        res[0] = 1;
+            int n = nums.length;
+            int[] res = new int[n];
+            res[0] = 1;
 
-        // 前綴積
-        for (int i = 1; i < n; i++) {
-            res[i] = res[i - 1] * nums[i - 1];
+            // 前綴積
+            for (int i = 1; i < n; i++) {
+                res[i] = res[i - 1] * nums[i - 1];
+            }
+
+            int rigth = 1;
+            // 後綴積
+            for (int i = n - 1; i >= 0; i--) {
+                res[i] *= rigth;
+                rigth *= nums[i];
+            }
+
+            return res;
         }
-
-        int rigth = 1;
-        // 後綴積
-        for (int i = n - 1; i >= 0; i--) {
-            res[i] *= rigth;
-            rigth *= nums[i];
-        }
-
-        return res;
     }
-}
 
 //
 //
@@ -94,3 +95,6 @@ class Solution {
 //        ---
 //
 //        ### **修正後程式碼**
+}
+
+
