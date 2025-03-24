@@ -48,7 +48,7 @@
 // 👍 59068 👎 2111
 
 
-import java.util.HashMap;
+import java.util.*;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class No_1_Two_Sum {
@@ -70,6 +70,41 @@ class No_1_Two_Sum {
     public static void main(String[] args) {
         No_1_Two_Sum solution = new No_1_Two_Sum();
         solution.twoSum(new int[]{2, 7, 11, 15}, 9);
+    }
+
+    //2025-03-24
+    public static class solution {
+        public int[] twoSum(int[] nums, int target) {
+            //key: number, value: index of array
+            Map<Integer, Integer> numMap = new HashMap<>();
+            //prepare map
+            //O(n)
+            for(int i = 0; i < nums.length; i++){
+                numMap.put(nums[i], i);
+            }
+
+            int diff;
+            //loop in array
+            //O(n)
+            for(int i = 0; i < nums.length; i++) {
+                diff = target - nums[i];
+                if (numMap.containsKey(diff) && numMap.get(diff) != i) {
+                    return new int[]{i, numMap.get(diff)};
+                }
+            }
+            // No match found
+            return null;
+        }
+
+        public static void main(String[] args) {
+            //nums = [2,7,11,15], target = 9
+            solution twoSum = new solution();
+            int[] nums = {2, 7, 11, 15};
+            int target = 9;
+            System.out.println(Arrays.toString(twoSum.twoSum(nums, target)));
+
+        }
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
