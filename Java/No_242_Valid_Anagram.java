@@ -7,24 +7,24 @@ public class No_242_Valid_Anagram {
         public boolean isAnagram(String s, String t) {
             if (s.length() != t.length()) return false;
 
-            //Count character num of s
-            // key : each character, value: count of each character
-            Map<Character, Integer> charMap = new HashMap<>();
+            //Count the number of characters in string s.
+            //Key: each character, Value: the count of each character.
+            Map<Character, Integer> charCountMap = new HashMap<>();
             for (int i = 0; i < s.length(); i++) {
-                if (charMap.containsKey(s.charAt(i))) {
-                    charMap.put(s.charAt(i), charMap.get(s.charAt(i)) + 1);
+                if (charCountMap.containsKey(s.charAt(i))) {
+                    charCountMap.put(s.charAt(i), charCountMap.get(s.charAt(i)) + 1);
                 } else {
-                    charMap.put(s.charAt(i), 1);
+                    charCountMap.put(s.charAt(i), 1);
                 }
             }
 
             for (int i = 0; i < t.length(); i++) {
-                if (charMap.containsKey(t.charAt(i))) {
-                    // when not match count
-                    if (charMap.get(t.charAt(i)) == 0) return false;
+                if (charCountMap.containsKey(t.charAt(i))) {
+                    // When the counts do not match.
+                    if (charCountMap.get(t.charAt(i)) == 0) return false;
 
-                    //when match character , count -1
-                    charMap.put(t.charAt(i), charMap.get(t.charAt(i)) - 1);
+                    //When the characters match, decrement the count by 1
+                    charCountMap.put(t.charAt(i), charCountMap.get(t.charAt(i)) - 1);
                 } else {
                     // when not match count
                     return false;
