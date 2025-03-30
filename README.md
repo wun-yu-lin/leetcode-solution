@@ -36,6 +36,11 @@ git diff --cached --quiet || {
 echo "Success!"
 # Exit hook normally
 exit 0
+```
+
+
+
+- Solution summary
 
 
 | Problem # | Problem | C++ | Java |

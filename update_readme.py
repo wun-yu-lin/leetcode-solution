@@ -123,6 +123,9 @@ git diff --cached --quiet || {{
 echo "Success!"
 # Exit hook normally
 exit 0
+```
+\n\n
+- Solution summary
 \n\n{table}\n"
 """
     with open(README_FILE, "w", encoding="utf-8") as file:
