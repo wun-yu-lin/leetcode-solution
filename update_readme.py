@@ -126,7 +126,7 @@ exit 0
 ```
 \n\n
 # LeetCode Solutions Summary
-\n\n{table}\n"
+\n\n{table}\n
 """
     with open(README_FILE, "w", encoding="utf-8") as file:
         file.write(content)

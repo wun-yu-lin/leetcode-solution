@@ -63,4 +63,4 @@ exit 0
 | 242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/description/) | - | [v](https://github.com/wun-yu-lin/leetcode-solution/blob/main/Java/No_242_Valid_Anagram.java) |
 | 380 | [Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/description/?envType=study-plan-v2&envId=top-interview-150) | - | [v](https://github.com/wun-yu-lin/leetcode-solution/blob/main/Java/No_380_Insert_Delete_GetRandom_O1.java) |
 | 392 | [Is Subsequence](https://leetcode.com/problems/is-subsequence/description/?envType=study-plan-v2&envId=top-interview-150) | - | [v](https://github.com/wun-yu-lin/leetcode-solution/blob/main/Java/No_392_Is_Subsequence.java) |
-"
+
