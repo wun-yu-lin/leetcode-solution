@@ -40,7 +40,7 @@ exit 0
 
 
 
-# Solution summary
+# LeetCode Solutions Summary
 
 
 | Problem # | Problem | C++ | Java |
