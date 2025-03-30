@@ -87,44 +87,44 @@ def update_readme(problems):
     content = f"# LeetCode Solutions\n\nThis repository contains solutions to LeetCode problems.\n\n{table}\n"
     content = f"""# LeetCode Solutions
 
-    - This repository contains solutions to LeetCode problems.
-    
-    - Usage Instructions
-    
-    - To use this repository, follow these steps:
-    
-      1. Fork this repository.
-      2. In `update_readme.py`, change `GITHUB_BASE_URL` to your own repository's URL.
-      3. Install Python 3 in your environment, e.g., Python 3.10.12.
-      4. Use [Clip LeetCode](https://chromewebstore.google.com/detail/clip-leetcode/cnghimckckgcmhbdokjielmhkmnagdcp?pli=1) to copy the problem statement into `Notes/filename.md`.
-      5. Start solving problems in the corresponding folder, e.g., `Java`, `C++`.
-      6. Name your files according to the format `No_123_Solution_name`.
-      7. Add the following pre-commit hook in `./.git/hooks/pre-commit`:
-    
-    ```bash
-    #!/bin/bash
-    
-    # Run README update script before committing
-    echo "Updating README.md..."
-    python3 update_readme.py
-    
-    # Add README.md to the commit if modified
-    if [[ -n $(git status README.md --porcelain) ]]; then
-        echo "Staging updated README.md..."
-        git add README.md
-    fi
-    
-    # Ensure file status is synchronized
-    echo "Validating staged changes..."
-    git diff --cached --quiet || {{
-        echo "README.md has been updated and staged."
-    }}
-    
-    echo "Success!"
-    # Exit hook normally
-    exit 0
-    \n\n{table}\n"
-    """
+- This repository contains solutions to LeetCode problems.
+
+- Usage Instructions
+
+- To use this repository, follow these steps:
+
+  1. Fork this repository.
+  2. In `update_readme.py`, change `GITHUB_BASE_URL` to your own repository's URL.
+  3. Install Python 3 in your environment, e.g., Python 3.10.12.
+  4. Use [Clip LeetCode](https://chromewebstore.google.com/detail/clip-leetcode/cnghimckckgcmhbdokjielmhkmnagdcp?pli=1) to copy the problem statement into `Notes/filename.md`.
+  5. Start solving problems in the corresponding folder, e.g., `Java`, `C++`.
+  6. Name your files according to the format `No_123_Solution_name`.
+  7. Add the following pre-commit hook in `./.git/hooks/pre-commit`:
+
+```bash
+#!/bin/bash
+
+# Run README update script before committing
+echo "Updating README.md..."
+python3 update_readme.py
+
+# Add README.md to the commit if modified
+if [[ -n $(git status README.md --porcelain) ]]; then
+    echo "Staging updated README.md..."
+    git add README.md
+fi
+
+# Ensure file status is synchronized
+echo "Validating staged changes..."
+git diff --cached --quiet || {{
+    echo "README.md has been updated and staged."
+}}
+
+echo "Success!"
+# Exit hook normally
+exit 0
+\n\n{table}\n"
+"""
     with open(README_FILE, "w", encoding="utf-8") as file:
         file.write(content)
 
