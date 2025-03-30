@@ -40,7 +40,7 @@ exit 0
 
 
 
-- Solution summary
+# Solution summary
 
 
 | Problem # | Problem | C++ | Java |
