@@ -17,9 +17,30 @@ public class No_7_Reverse_Integer {
             return (int) (isNegative ? res * -1 : res);
         }
     }
+    //iteration solution
+    static class Solution2 {
+        public int reverse(int x) {
+            final int MIN = -2147483648; // -2^31
+            final int MAX = 2147483647;  // 2^31 - 1
+
+            int result = 0;
+            int curentInt = x;
+            while (curentInt != 0) {
+                //last number
+                int digit = curentInt % 10;
+                curentInt /= 10; // remove last number
+                if (result > MAX / 10 || (result == MAX / 10 && digit > MAX % 10))
+                    return 0;
+                if (result < MIN / 10 || (result == MIN / 10 && digit < MIN % 10))
+                    return 0;
+                result = (result * 10) + digit;
+            }
+            return result;
+        }
+    }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution2 solution = new Solution2();
 
 //
 //        Example 1:
