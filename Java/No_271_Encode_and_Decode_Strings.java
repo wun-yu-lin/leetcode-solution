@@ -64,7 +64,7 @@ public class No_271_Encode_and_Decode_Strings {
                 int start;
                 int end;
                 if (next == '#') {
-                    int size = Integer.parseInt(String.valueOf(Arrays.copyOfRange(chars, n, i)));
+                    int size = Integer.parseInt(new String(chars, n, i - n));
                     start = i + 1;
                     end = start + size;
                     char[] sub = Arrays.copyOfRange(chars, start, end);
