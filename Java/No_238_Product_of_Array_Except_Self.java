@@ -1,8 +1,25 @@
 public class No_238_Product_of_Array_Except_Self {
     class Solution {
+        /**
+         * <pre>
+         * prefix = nums[0] × nums[1] × ... × nums[i-1]
+         * suffix = nums[i+1] × nums[i+2] × ... × nums[n-1]
+         *
+         * input [a,b,c,d]
+         * output [bcd, acd, abd, abc]
+         *
+         * prefix [1, a, ab, abc]
+         * suffix [bcd, cd, d, 1]
+         *
+         * for loop i = 1 to prefix.len -1
+         *  res[i] = prefix[i] x suffix[i]
+         *
+         * </pre>
+         *
+         *
+         *
+         */
         public int[] productExceptSelf(int[] nums) {
-            // prefix = nums[0] × nums[1] × ... × nums[i-1]
-            // suffix = nums[i+1] × nums[i+2] × ... × nums[n-1]
 
             int n = nums.length;
             int[] res = new int[n];
