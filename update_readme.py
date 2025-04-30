@@ -89,7 +89,7 @@ def update_readme(problems):
 
 - This repository contains solutions to LeetCode problems.
 - LeetCode statistics \n
-    <img src="https://leetcard.jacoblin.cool/wylinze?theme=dark&font=Sarpanch&ext=activity" alt="wylinze-leetcode" />
+    <img src="https://leetcard.jacoblin.cool/wylinze?theme=dark&font=Sarpanch&ext=activity" alt="wylinze-leetcode" width = 300px />
 
 - Usage Instructions
 
