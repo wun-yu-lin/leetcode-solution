@@ -1,6 +1,8 @@
 # LeetCode Solutions
 
 - This repository contains solutions to LeetCode problems.
+- LeetCode statistics
+    <img src="https://leetcard.jacoblin.cool/wylinze?theme=dark&font=Sarpanch&ext=activity" alt="wylinze-leetcode" />
 
 - Usage Instructions
 
