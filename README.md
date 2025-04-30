@@ -49,6 +49,7 @@ exit 0
 | Problem # | Problem | C++ | Java |
 | :--- | :--- | :--- | :--- |
 | 1 | [Two Sum](https://leetcode.com/problems/two-sum/description/) | - | [v](https://github.com/wun-yu-lin/leetcode-solution/blob/main/Java/No_1_Two_Sum.java) |
+| 5 | [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/) | - | [v](https://github.com/wun-yu-lin/leetcode-solution/blob/main/Java/No_5_Longest_Palindromic_Substring.java) |
 | 6 | [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/description/?envType=study-plan-v2&envId=top-interview-150) | - | [v](https://github.com/wun-yu-lin/leetcode-solution/blob/main/Java/No_6_Zigzag_Conversion.java) |
 | 7 | [Reverse Integer](https://leetcode.com/problems/reverse-integer/description/) | - | [v](https://github.com/wun-yu-lin/leetcode-solution/blob/main/Java/No_7_Reverse_Integer.java) |
 | 13 | [Roman to Integer](https://leetcode.com/problems/roman-to-integer/?envType=study-plan-v2&envId=top-interview-150) | - | [v](https://github.com/wun-yu-lin/leetcode-solution/blob/main/Java/No_13_Roman_to_Integer.java) |
