@@ -58,7 +58,7 @@ def find_solutions_by_language(language, problems):
     """
     folder = LANGUAGE_FOLDERS.get(language)
     for file_name in get_all_files(folder):
-        file_type =LANGUAGE_FILE_TYPE(language)
+        file_type =LANGUAGE_FILE_TYPE.get(language)
         reg =r"No_(\d+)_.*?\.(" + file_type + ")$"
         match = re.match(reg, file_name, re.IGNORECASE)
         if match:
