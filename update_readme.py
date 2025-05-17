@@ -4,6 +4,7 @@ import re
 BASE_DIR = os.getcwd()
 
 LANGUAGE_FOLDERS = {
+    "Notes": "Notes",
     "C++": "C++",
     "Java": "Java"
 }
