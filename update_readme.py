@@ -8,6 +8,12 @@ LANGUAGE_FOLDERS = {
     "C++": "C++",
     "Java": "Java"
 }
+LANGUAGE_FILE_TYPE = {
+    "Notes": "md",
+    "C++": "cpp",
+    "Java": "java"
+}
+
 
 NOTES_FOLDER = "Notes"
 README_FILE = "README.md"
@@ -52,7 +58,9 @@ def find_solutions_by_language(language, problems):
     """
     folder = LANGUAGE_FOLDERS.get(language)
     for file_name in get_all_files(folder):
-        match = re.match(r"No_(\d+)_.*?\.(cpp|java|md)$", file_name, re.IGNORECASE)
+        file_type =LANGUAGE_FILE_TYPE(language)
+        reg =r"No_(\d+)_.*?\.(" + file_type + ")$"
+        match = re.match(reg, file_name, re.IGNORECASE)
         if match:
             problem_id = int(match.group(1))
             if problem_id in problems:
