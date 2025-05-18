@@ -114,7 +114,7 @@ public class No_15_3Sum {
 
             for (int i = 0; i < nums.length - 2; i++) {
                 if (i > 0 && nums[i] == nums[i - 1]) continue; // Skip duplicates
-
+                if (nums[i] > 0) continue;
                 int lp = i + 1;
                 int rp = nums.length - 1;
                 int target = -nums[i];
