@@ -18,12 +18,15 @@ public class No_11_Container_With_Most_Water {
         log.info(String.valueOf(solution.maxArea(new int[] {1,1})));
 
         //[1,2,4,3]
+        // 4
         log.info(String.valueOf(solution.maxArea(new int[] {1,2,4,3})));
 
         //[1,2,3,1000,9]
+        //9
         log.info(String.valueOf(solution.maxArea(new int[] {1,2,3,1000,9})));
 
         //[1,8,6,2,5,4,8,25,7]
+        //49
         log.info(String.valueOf(solution.maxArea(new int[] {1,8,6,2,5,4,8,25,7})));
 
 
@@ -35,40 +38,26 @@ public class No_11_Container_With_Most_Water {
         public int maxArea(int[] height) {
             if (height.length == 0) return 0;
             if (height.length == 1) return height[0];
-            if (height.length == 2) return Math.min(height[0], height[1]);
-            int currArea;
+            int maxArea = Integer.MIN_VALUE;
+            int lp = 0;
+            int rp = height.length - 1;
 
-            //find left max area
-            int leftMaxArea = Integer.MIN_VALUE;
-            int leftMaxIdx = 0;
-
-            for (int i = 0; i < height.length - 1; i++) {
-                currArea = height[i] * (height.length - i);
-                if (leftMaxArea < currArea) {
-                    leftMaxArea = currArea;
-                    leftMaxIdx = i;
+            while (lp < rp) {
+                int minHeight = Math.min(height[lp], height[rp]);
+                int area = minHeight * (rp - lp);
+                if (area > maxArea) {
+                    maxArea = area;
+                }
+                //shift pointer
+                if (height[lp] < height[rp]) {
+                    lp++;
+                } else {
+                    rp--;
                 }
             }
 
-            //find right max area
-            int rightMaxArea = Integer.MIN_VALUE;
-            int rightMaxIdx = 0;
-            for (int i = height.length - 1; i >=0 ; i--) {
-                if (i == leftMaxIdx) {continue;}
-                currArea = height[i] * (i+1) ;
-                if (rightMaxArea < currArea) {
-                    rightMaxArea = currArea;
-                    rightMaxIdx = i;
-                }
-            }
+            return maxArea;
 
-            //calculate max area
-            int minHeight = Math.min(height[leftMaxIdx], height[rightMaxIdx]);
-            int diff = rightMaxIdx - leftMaxIdx;
-            if (diff == 0) {
-                diff = 1;
-            }
-            return minHeight * diff;
         }
     }
 }
