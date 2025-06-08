@@ -25,14 +25,14 @@ public class No_121_Best_Time_to_Buy_and_Sell_Stock {
 
     static class Solution {
         public int maxProfit(int[] prices) {
-            int benefit = 0;
+            int profit = 0;
             int minInt = Integer.MAX_VALUE;
             for (int i = 0; i < prices.length; i++) {
                 int curr = prices[i] - minInt;
-                benefit = Math.max(curr, benefit);
+                profit = Math.max(curr, profit);
                 minInt = Math.min(prices[i], minInt);
             }
-            return benefit;
+            return profit;
         }
     }
 
