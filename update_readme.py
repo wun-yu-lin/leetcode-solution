@@ -80,7 +80,8 @@ def build_table(problems):
         for lang in LANGUAGE_FOLDERS.keys():
             if lang in problem["languages"]:
                 file_path = problem["languages"][lang]
-                row.append(f"[{lang}]({GITHUB_BASE_URL}/{file_path})")  # 僅顯示 v
+                file_type = LANGUAGE_FILE_TYPE.get(lang)
+                row.append(f"[{file_type}]({GITHUB_BASE_URL}/{file_path})")  # 僅顯示 v
             else:
                 row.append("-")
         rows.append(row)
