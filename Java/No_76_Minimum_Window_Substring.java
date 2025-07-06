@@ -56,21 +56,65 @@ public class No_76_Minimum_Window_Substring {
         }
     }
 
+    public static class Solution2 {
+        public String minWindow(String s, String t) {
+            if (s.length() < t.length()) return "";
+
+            Map<Character, Integer> template = new HashMap<>();
+            for (char c : t.toCharArray()) {
+                template.put(c, template.getOrDefault(c, 0) + 1);
+            }
+
+            Map<Character, Integer> window = new HashMap<>();
+            int have = 0, need = template.size();
+            int lp = 0, minLen = Integer.MAX_VALUE, minStart = 0;
+
+            for (int rp = 0; rp < s.length(); rp++) {
+                char c = s.charAt(rp);
+                window.put(c, window.getOrDefault(c, 0) + 1);
+
+                if (template.containsKey(c) && window.get(c).intValue() == template.get(c).intValue()) {
+                    have++;
+                }
+
+                while (have == need) {
+                    // update result if smaller window found
+                    if (rp - lp + 1 < minLen) {
+                        minLen = rp - lp + 1;
+                        minStart = lp;
+                    }
+
+                    // shrink window from left
+                    char leftChar = s.charAt(lp);
+                    window.put(leftChar, window.get(leftChar) - 1);
+                    if (template.containsKey(leftChar) &&
+                            window.get(leftChar) < template.get(leftChar)) {
+                        have--;
+                    }
+                    lp++;
+                }
+            }
+
+            return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
+        }
+
+    }
+
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        Solution2 s = new Solution2();
 //        Example 1:
 //
 //        Input: s = "ADOBECODEBANC", t = "ABC"
 //        Output: "BANC"
 //        Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
-        System.out.println("example 1:" +  s.minWindow("ADOBECODEBANC", "ABC"));
+        System.out.println("example 1:" + s.minWindow("ADOBECODEBANC", "ABC"));
 //                Example 2:
 //
 //        Input: s = "a", t = "a"
 //        Output: "a"
 //        Explanation: The entire string s is the minimum window.
-        System.out.println("example 2:"+s.minWindow("a", "a"));
+        System.out.println("example 2:" + s.minWindow("a", "a"));
 
 //        Example 3:
 //
@@ -78,7 +122,11 @@ public class No_76_Minimum_Window_Substring {
 //        Output: ""
 //        Explanation: Both 'a's from t must be included in the window.
 //                Since the largest window of s only has one 'a', return empty string.
-        System.out.println("example 3:"+s.minWindow("a", "aa"));
+        System.out.println("example 3:" + s.minWindow("a", "aa"));
+
+        //s = "aa", t="aa"
+        //output "aa"
+        System.out.println("example 4:" + s.minWindow("aa", "aa"));
 
     }
 
