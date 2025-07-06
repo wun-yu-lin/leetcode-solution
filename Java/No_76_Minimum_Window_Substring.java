@@ -108,13 +108,13 @@ public class No_76_Minimum_Window_Substring {
 //        Input: s = "ADOBECODEBANC", t = "ABC"
 //        Output: "BANC"
 //        Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
-        System.out.println("example 1:" + s.minWindow("ADOBECODEBANC", "ABC"));
+        logger.info("example 1:" + s.minWindow("ADOBECODEBANC", "ABC"));
 //                Example 2:
 //
 //        Input: s = "a", t = "a"
 //        Output: "a"
 //        Explanation: The entire string s is the minimum window.
-        System.out.println("example 2:" + s.minWindow("a", "a"));
+        logger.info("example 2:" + s.minWindow("a", "a"));
 
 //        Example 3:
 //
@@ -122,11 +122,11 @@ public class No_76_Minimum_Window_Substring {
 //        Output: ""
 //        Explanation: Both 'a's from t must be included in the window.
 //                Since the largest window of s only has one 'a', return empty string.
-        System.out.println("example 3:" + s.minWindow("a", "aa"));
+        logger.info("example 3:" + s.minWindow("a", "aa"));
 
         //s = "aa", t="aa"
         //output "aa"
-        System.out.println("example 4:" + s.minWindow("aa", "aa"));
+        logger.info("example 4:" + s.minWindow("aa", "aa"));
 
     }
 
