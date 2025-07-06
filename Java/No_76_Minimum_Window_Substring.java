@@ -71,9 +71,9 @@ public class No_76_Minimum_Window_Substring {
 
             for (int rp = 0; rp < s.length(); rp++) {
                 char c = s.charAt(rp);
-                window.put(c, window.getOrDefault(c, 0) + 1);
+                window.compute(c, (k, v) -> v == null ? 1 : v + 1);
 
-                if (template.containsKey(c) && window.get(c).intValue() == template.get(c).intValue()) {
+                if (template.containsKey(c) && window.get(c).equals(template.get(c))) {
                     have++;
                 }
 
@@ -86,7 +86,7 @@ public class No_76_Minimum_Window_Substring {
 
                     // shrink window from left
                     char leftChar = s.charAt(lp);
-                    window.put(leftChar, window.get(leftChar) - 1);
+                    window.compute(leftChar, (k, v) -> v == null ? null : v -1);
                     if (template.containsKey(leftChar) &&
                             window.get(leftChar) < template.get(leftChar)) {
                         have--;
