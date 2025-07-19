@@ -38,7 +38,7 @@ public class No_153_Find_Minimum_in_Rotated_Sorted_Array {
                 if (nums[mid] > nums[rp]) {
                     lp = mid + 1;
                 } else {
-                    rp = mid - 1;
+                    rp = mid;
                 }
             }
 
