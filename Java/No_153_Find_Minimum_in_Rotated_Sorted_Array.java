@@ -34,16 +34,14 @@ public class No_153_Find_Minimum_in_Rotated_Sorted_Array {
             int lp = 0;
             int rp = nums.length - 1;
             while (lp < rp) {
-                int mid = (lp + rp) / 2;
+                int mid = (rp - lp) / 2 + lp;
                 if (nums[mid] > nums[rp]) {
                     lp = mid + 1;
                 } else {
                     rp = mid;
                 }
             }
-
             return nums[lp];
-
         }
     }
 }
