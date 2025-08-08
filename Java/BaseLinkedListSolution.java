@@ -26,8 +26,8 @@ public class BaseLinkedListSolution extends BaseSolution {
 
     public static ListNode buildListNode(int[] arr){
         ListNode curr = new ListNode();
-        if (arr.length == 0) {
-            return curr;
+        if (arr == null || arr.length == 0) {
+            return null;
         }
         ListNode head = curr;
         ListNode next;
@@ -40,6 +40,7 @@ public class BaseLinkedListSolution extends BaseSolution {
     }
     public static void printAllNodeValue(ListNode listNode) {
         ListNode n = listNode;
+        System.out.print("printAllNodeValue:");
         while (n != null) {
             System.out.print(n.val);
             System.out.print(",");
