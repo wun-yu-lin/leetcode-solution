@@ -36,7 +36,7 @@ public class BaseLinkedListSolution extends BaseSolution {
             curr.next = next;
             curr = next;
         }
-        return head;
+        return head.next;
     }
     public static void printAllNodeValue(ListNode listNode) {
         ListNode n = listNode;
